@@ -75,7 +75,7 @@ export default function App() {
 
     const connectionStatus = {
         [ReadyState.CONNECTING]: 'Connecting',
-        [ReadyState.OPEN]: 'Open',
+        [ReadyState.OPEN]: 'Connected',
         [ReadyState.CLOSING]: 'Closing',
         [ReadyState.CLOSED]: 'Closed',
         [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
@@ -96,7 +96,7 @@ export default function App() {
 
     return (
         <main className="">
-            <div className="overflow-hidden rounded-lg bg-white shadow p-16 flex flex-col gap-8 m-16 ">
+            <div className="overflow-hidden rounded-lg bg-white shadow px-4 py-8 sm:p-16 flex flex-col gap-4 sm:gap-8 sm:m-16 ">
                 <div className="md:flex md:items-start md:justify-between ">
                     <div className="min-w-0 flex-1">
                         <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
@@ -107,7 +107,7 @@ export default function App() {
                                     ["text-red-600"]: readyState === ReadyState.CLOSED,
                                 })}>{connectionStatus}</span></span>
                         </h2>
-                        <h4>
+                        <h4 className="text-sm leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight break-all mt-2 sm:mt-4">
                             {socketUrl}
                         </h4>
                     </div>
@@ -121,7 +121,7 @@ export default function App() {
                         </button>
                         <button
                             type="button"
-                            className="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="ml-3 inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                             onClick={() => {
                                 readyState === ReadyState.OPEN ? setSocketUrl('') : setSocketUrl('wss://stream.binance.com:443/ws/maticusdt@kline_1s');
                             }}
@@ -155,7 +155,7 @@ export default function App() {
                                 id="email"
                                 value={pair}
                                 onChange={(e) => setPair(e.target.value.toLowerCase())}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
@@ -163,7 +163,7 @@ export default function App() {
                     <button
                         type="button"
                         onClick={() => updateStream()}
-                        className="rounded-md bg-indigo-50 px-3.5 py-2.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
+                        className="rounded-md bg-blue-50 px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-100"
                     >
                         Update stream
                     </button>
